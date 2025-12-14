@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semáforo</title>
+
+    <style>
+        body
+        {
+            display: flex;
+            justify-content: space-between;
+        }
+        .semaforo
+        {
+            background-color: rgb(27, 56, 144);
+            height: 97vh;
+        }
+        .cor
+        {
+            margin: 20px 110px;
+            background-color: rgb(182, 177, 177);
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            transition: background 1s;
+        }
+        .guia {
+            background-color: rgb(124, 144, 174); /* só pra você enxergar */
+            width: 200px; 
+            height: 97vh;
+        }
+
+        .restart
+        {
+            background-color: rgb(34, 191, 230);
+            border: none;
+            border-radius: 5px;
+            margin: 20px;
+            padding: 20px;
+        }
+        .restart:hover
+        {
+            background-color: rgb(26, 79, 212);
+        }
+    </style>
+</head>
+<body>
+    <div class = "guia">
+        <button class = "restart" onclick = "Restart()">Recomeçar</button>
+    </div>
+
+    <div class = "semaforo">
+        <br>
+        <div class = "cor" id = "stopAll"></div>
+        <div class = "cor" id = "stop"></div>
+        <div class = "cor" id = "wait"></div>
+        <div class = "cor" id = "go"></div>
+        <div class = "cor" id = "voidStreet"></div>
+    </div>
+
+    <div class = "guia">
+        
+    </div>
+
+    <script>
+        const StopAll = document.getElementById("stopAll");
+        const Stop = document.getElementById("stop");
+        const Wait = document.getElementById("wait");
+        const Go = document.getElementById("go");
+        const Void = document.getElementById("voidStreet");
+
+        const cores = ["purple", "red", "yellow", "lime", "white"];
+        const espacos = [StopAll, Stop, Wait, Go, Void];
+
+        let index = 0;
+        
+        function Continue ()
+        {
+            if (index+1 > cores.length)
+            {
+                index = 0;
+            }
+
+            espacos.forEach (light => {
+                light.style.backgroundColor = "rgb(70, 70, 70)";
+            });
+            espacos[index].style.backgroundColor = cores[index];
+
+            index = index + 1;
+            Perigo();
+        }
+
+        async function Restart ()
+        {
+            index = 0;
+        }
+
+        function Perigo ()
+        {
+            if (index < 3)
+            {
+                window.onblur = async function ()
+                {
+                    document.title = "Perigo!";
+                    alert ("Não abra outras guias enquanto o sinal estiver instável");
+                }
+            }
+            else
+            {
+                window.onblur = "";
+                document.title = "Semáforo";
+            }
+        }
+
+        setInterval(Continue, 1500);
+        Continue();
+    </script>
+</body>
+</html>

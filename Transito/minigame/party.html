@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Eagle</title>
+    <link href="css/Aves.css" rel="stylesheet">
+
+    <style>
+        body
+        {
+            background: linear-gradient(to right, rgb(0, 144, 254), rgb(30, 64, 166));
+            user-select: none;
+        }
+        .cena
+        {
+            width: 75vh;
+            height: 97vh;
+            position: absolute;
+            left: 10%;
+        }
+        .hud
+        {
+            position: fixed;
+            top: 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class = "cena">
+        <img src = "Imagens/Mega_Águia.webp" class = "aguia" width = "190px" id = "Aguia">
+        <img src = "Imagens/Rovio.png" class = "rovio" width = "200px" id = "Rovio">
+        <img src = "Imagens/Bomb.png" class = "bomb" width = "200px" id = "Bomb">
+    </div>
+    <div class="cenam"></div>
+
+    <div class = "hud">
+        <h1 class = "vidas" id = "vidas">Vidas: 100</h1>
+    </div>
+    <script  src="js/CreateBomb.js"></script>
+    
+    <script type="module">
+        import Aguia from './js/Aguia.js';
+        import Bomb from './js/Bomb.js';
+        import Rovio from './js/Rovio.js';
+        import Vidas from './js/Vidas.js';
+
+        const imgAguia = document.getElementById("Aguia");
+        const imgRovio = document.getElementById("Rovio");
+        const aguia = new Aguia (0, imgAguia, 100);
+
+        const html = document.getElementById("vidas");
+        const vidas = new Vidas(100, html);
+
+        new Rovio (imgAguia, imgRovio, 5);
+        window.onclick = () => aguia.Click();
+
+        setInterval (() => criarBomba(Bomb, vidas), 1000);
+
+        
+    </script>
+
+    <script>
+
+    </script>
+
+    
+</body>
+</html>

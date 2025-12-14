@@ -1,0 +1,16 @@
+.paragrafo1
+{
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    left: 35%;
+}
+
+.paragrafo2
+{
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    left: 20%;
+    top: 115%;
+}

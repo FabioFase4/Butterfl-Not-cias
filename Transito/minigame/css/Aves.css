@@ -1,0 +1,17 @@
+.aguia
+{
+    transform: scaleX(-1);
+    position: absolute;
+}
+.rovio
+{
+    position: absolute;
+    left: 170%;
+    transform: scaleX(-1);
+}
+.bomb
+{
+    transform: scaleX(-1);
+    left: 150%;
+    position: absolute;
+}
