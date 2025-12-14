@@ -1,5 +1,5 @@
 # Butterfly - Notícias
-As notícias da Butterfly estão só começando
+As notícias da Butterfly estão só começando.
 Não é um site real, apenas um teste!
 
 # Métodos de Acesso
